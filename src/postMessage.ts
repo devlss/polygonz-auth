@@ -6,6 +6,6 @@ export function postAuthMessage(message?: string) {
 	// TODO иногда проверка не проходит, нужно понять почему меняется referrer
 	if (TARGET_ORIGIN_REGEXP.test(document.referrer) && window !== window.top) {
 		console.debug('[post]');
-		window.top?.postMessage(message || KEY_MESSAGE, TARGET_ORIGIN.href || '*');
+		window.top?.postMessage(message || KEY_MESSAGE, '*');
 	}
 }
