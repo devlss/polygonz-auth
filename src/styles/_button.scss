@@ -1,0 +1,29 @@
+.button {
+	display: block;
+	text-align: center;
+	line-height: 3rem;
+	text-decoration: none;
+	font-size: 1em;
+	cursor: pointer;
+	width: 100%;
+	border-radius: var(--radius);
+	&__submit {
+		background-color: var(--color-accent);
+		color: var(--color-invert);
+		border: none;
+	}
+	&__link {
+		position: relative;
+		color: var(--color-dim);
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			border: 1px solid var(--color-dim);
+			border-radius: var(--radius);
+		}
+	}
+}

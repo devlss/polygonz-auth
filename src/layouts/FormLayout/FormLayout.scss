@@ -1,0 +1,63 @@
+$bg: URL('../../assets/bg-top.jpg');
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 100%;
+	justify-items: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.form-layout {
+	&__form {
+		overflow: hidden;
+		width: 400px;
+		min-width: 220px;
+		border-radius: var(--radius);
+	}
+}
+
+.with-bg {
+	background-image: $bg;
+	background-color: var(--color-bg-dark);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+@media screen and (max-width: 420px) {
+	.form-layout {
+		&__form {
+			width: 100%;
+			border-radius: 0;
+		}
+	}
+	.wrapper {
+		justify-items: stretch;
+		align-items: stretch;
+	}
+	.with-bg {
+		background-image: none;
+	}
+}
+
+.form-header {
+	padding: 2em;
+	background-color: var(--color-accent);
+	color: var(--color-invert);
+	font-weight: bold;
+}
+
+.form {
+	padding: 2em;
+	background-color: var(--color-bg-light);
+	&__section + &__section {
+		margin-top: 2em;
+	}
+	&__section {
+		& > * + * {
+			margin-top: 1em;
+		}
+	}
+
+}
