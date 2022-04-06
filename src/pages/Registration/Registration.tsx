@@ -26,12 +26,15 @@ const validate = (values: IRegistrationFormFields) => {
 export const Registration: FC<RegistrationProps> = () => {
 	const provider = AuthConsumer();
 
-	const onSubmit = async (values: IRegistrationFormFields, {setSubmitting}: FormikHelpers<IRegistrationFormFields>) => {
-		const result = await provider.register(values);
-		if (result) {
+	const onSubmit = async (values: IRegistrationFormFields, {setSubmitting, setFieldError}: FormikHelpers<IRegistrationFormFields>) => {
+		try {
+			await provider.register(values);
 			postAuthMessage();
+		} catch (error) {
+			setFieldError('login', 'Ошибка регистрации');
+		} finally {
+			setSubmitting(false);
 		}
-		setSubmitting(false);
 	};
 
 	return (

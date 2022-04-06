@@ -37,7 +37,7 @@ function responseHandler<T>(response: AxiosResponse<T>): AxiosResponse<T> {
 /**
  * Перехватчик ошибок от сервера. Позволяет выполнять обработку всех ошибок,
  * до возвращения в промис вызвавшего метода
- * @param response  Объект ошибки от сервера
+ * @param responseError Объект ошибки от сервера
  */
 function responseErrorHandler(responseError: AxiosError<unknown>): Promise<IApiBadRequestError> {
 	let badRequestError: IApiBadRequestError;

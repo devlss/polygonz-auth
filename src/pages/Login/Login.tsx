@@ -22,12 +22,15 @@ const validate = (values: ILoginFormFields) => {
 export const Login: FC<LoginProps> = () => {
 	const provider = AuthConsumer();
 
-	const onSubmit = async (values: ILoginFormFields, {setSubmitting}: FormikHelpers<ILoginFormFields>) => {
-		const result = await provider.login(values);
-		if (result) {
+	const onSubmit = async (values: ILoginFormFields, {setSubmitting, setFieldError}: FormikHelpers<ILoginFormFields>) => {
+		try {
+			await provider.login(values);
 			postAuthMessage();
+		} catch (error) {
+			setFieldError('login', 'Ошибка авторизации');
+		} finally {
+			setSubmitting(false);
 		}
-		setSubmitting(false);
 	};
 
 	return (
